@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Timed Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+</head>
+
+<body>
+    <header>
+        <button id="score-page-button">High Scores</button>
+        <button id="home-button">Return Home</button>
+        <h1 id="timer"></h1>
+    </header>
+    <main>
+
+        <div class="mainwrapper">
+
+            <section id="home">
+                <h1>Welcome to a timed Javascript quiz!</h1>
+                <br>
+                <p>Here you will take a timed test. For each answer you get wrong,
+                    15 seconds will be removed from the clock. Press the start button to, well, you know... get STARTED!
+                    Best of luck!
+                </p>
+                <button id = "start-button">START!</button>
+            </section>
+
+            <section id="quiz">
+                <h2 id="question"></h2>
+                <ol id="a-list">
+                    <li><button class="a-button"></button></li>
+                    <li><button class="a-button"></button></li>
+                    <li><button class="a-button"></button></li>
+                    <li><button class="a-button"></button></li>
+                </ol>
+            </section>
+
+            <section id="score-page">
+                <h2>High Scores:</h2>
+                <ol id="score-list">
+                    <li class="score-input"></li>
+                </ol>
+                <button id="clear-button">Clear high scores!</button> 
+            </section>
+            
+        </div> 
+    </main>
+    <footer>
+        <h1>this is the FOOTER </h1>
+        <h1> everyone is happy</h1>
+    </footer>
+    <script rel ="script" src="./assets/js/script.js"></script>
+</body>
