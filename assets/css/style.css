@@ -29,6 +29,7 @@ footer {
     padding-left:20px;
     padding-right:20px;
     background-color: lightblue;
+    margin-top:10px;
 }
 
 main { 
@@ -70,6 +71,7 @@ button {
     border-radius: 25px;
     border-color: black;
     border-width: 10px;
+    margin-bottom: 10px;
     
 }
 
