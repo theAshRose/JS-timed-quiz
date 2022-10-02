@@ -68,10 +68,12 @@ var questionArray = [
 
 var answerButtonAll = document.querySelectorAll(".answerButton");
     for (x = 0; x <answerButtonAll.length; x++){
-        answerButtonAll[x].addEventListener("click", function(){
-            // if (answerButtonAll.innerHTML != questionArray.correctAnswer){
-            //     alert("working");
-            // }
+        answerButtonAll[x].addEventListener("click", function(event){
+             if (event.target.innerText == questionArray.correctAnswer); {
+                console.log(event);
+                console.log(questionArray.correctAnswer);
+                timeLeft-15;
+             }
             questionIndex++;
             populateQuestion();
         });
@@ -81,8 +83,6 @@ var questionIndex = 0;
 
 function populateQuestion() {
     if (questionIndex >= questionArray.length) {scoreInput();}
-        
-    
      currentQuestion = questionArray[questionIndex];
      question.textContent = currentQuestion.questionText;
      aButton1.textContent = currentQuestion.answers[0]
