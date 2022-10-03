@@ -1,5 +1,10 @@
 //home page
-
+var scoreListShown = [];
+var homeButton = document.querySelector("#home-button");
+var clearScore = document.querySelector("#clear-button");
+var scoreList = document.querySelector("#score-list");
+var scorePage = document.querySelector("#score-page");
+var scoreData = document.querySelector(".score-data");
 var startButton = document.querySelector("#start-button");
 var scorePageButton = document.querySelector("#score-page-button");
 
@@ -20,21 +25,8 @@ var quizPage = document.querySelector("#quiz");
 
 var timer = document.querySelector("#timer");
 
-//score page
+var userScore = 0;
 
-var homeButton = document.querySelector("#home-button");
-var clearScore = document.querySelector("#clear-button");
-
-var scoreList = document.querySelector(".score-list");
-var scorePage = document.querySelector("#score-page");
-var scoreData = document.querySelector(".score-data");
-
-//initials input page
-var initialsButton = document.querySelector("#user-initials-button");
-
-var initialsInput = document.querySelector("#user-initials");
-
-var initialScore = document.querySelector("#user-score");
 var initialsPage = document.querySelector("#post-game-input");
 
 
@@ -45,7 +37,75 @@ startButton.addEventListener("click", startQuiz);
 scorePageButton.addEventListener("click", scorePageGo);
 clearScore.addEventListener("click", clearScores);
 homeButton.addEventListener("click", pageLoad);
-initialsButton.addEventListener("click", scorePageGo);
+
+/// -----------------------------
+
+var initialsButton = document.querySelector("#user-initials-button");
+var initialsInput = document.querySelector("#user-initials");
+var initialScore = document.querySelector("#user-score");
+
+//score page
+function scorePageGo() {
+    homePage.hidden = true;
+    quizPage.hidden = true;
+    initialsPage.hidden = true;
+    scorePage.hidden = false;
+    homeButton.hidden = false;
+    scorePageButton.hidden = true;
+    timer.hidden = true;
+
+    
+
+
+    // scoreData.textContent = JSON.parse(localStorage.getItem("scoreStringNumber"))
+    // + " -- " + JSON.parse(localStorage.getItem("scoreStringLetters"));
+
+
+};
+
+// var highScores = [];
+
+function renderScores() {
+
+    var highScores = JSON.parse(localStorage.getItem("scoreString")) || [];
+    console.log(highScores);
+    highScores.forEach(function(score){
+        var liElem = document.createElement("li");
+        liElem.textContent = score.initials + " -- " + score.userScore;
+        console.log(liElem);
+        scoreList.appendChild(liElem);
+
+    });
+
+
+};
+
+
+initialsButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var highScores = JSON.parse(localStorage.getItem("scoreString")) || [];
+    console.log(highScores);
+    var initials = initialsInput.value;
+
+    var scoreString = {
+        score: userScore,
+        initials: initials,
+    }
+
+    highScores[0].push(scoreString);
+    
+    localStorage.setItem("scoreString", JSON.stringify(scoreString));
+    //localStorage.setItem("scoreStringLetters", JSON.stringify(scoreStringLetters));
+    renderScores();
+    scorePageGo();
+});
+
+
+//initials input page
+
+
+
+
 
 
 
@@ -69,12 +129,14 @@ var questionArray = [
 var answerButtonAll = document.querySelectorAll(".answerButton");
     for (x = 0; x <answerButtonAll.length; x++){
         answerButtonAll[x].addEventListener("click", function(event){
-             if (event.target.innerText == questionArray.correctAnswer); {
-                console.log(event);
-                console.log(questionArray.correctAnswer);
-                timeLeft-15;
+             if (event.target.innerText !== questionArray[questionIndex].correctAnswer) {
+                timeLeft = timeLeft - 15;
              }
-            questionIndex++;
+             if (event.target.innerText == questionArray[questionIndex].correctAnswer) {
+                userScore = userScore +3;
+                console.log(userScore);
+             }
+            questionIndex++
             populateQuestion();
         });
     }
@@ -94,9 +156,6 @@ function populateQuestion() {
         // console.log(currentQuestion);
      };
      
-
-var score = "";
-
 var timeLeft = 61;
 
 function startClock(){
@@ -105,7 +164,7 @@ function startClock(){
         timer.textContent = timeLeft;
         if(timeLeft === 0) {
             clearInterval(clockInterval);
-            scorePageGo();
+            scoreInput();
         }
     }, 1000);
 }
@@ -138,26 +197,20 @@ function pageLoad() {
     }
 };
 
+
+
 function scoreInput() {
+    initialScore.textContent = "You're score: " + userScore;
     document.querySelector("#home").hidden = true;
     document.querySelector("#quiz").hidden = true;
     document.querySelector("#post-game-input").hidden = false;
-    document.querySelector("#score-page").hidden = true;
+    document.querySelector("#score-page").hidden = false;
     document.querySelector("#home-button").hidden = true;
     document.querySelector("#score-page-button").hidden = true;
     timer.hidden = true;
+
 };
 
-function scorePageGo() {
-    homePage.hidden = true;
-    quizPage.hidden = true;
-    initialsPage.hidden = true;
-    scorePage.hidden = false;
-    homeButton.hidden = false;
-    scorePageButton.hidden = false;
-    timer.hidden = true;
-};
 
-function scoreStorage() {
 
-}
+
