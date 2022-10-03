@@ -79,6 +79,46 @@ var questionArray = [
         questionText: "When was Javascript created?", 
         answers: ["1969", "1995", "2077", "2012"],
         correctAnswer: "1995",
+    },
+    {
+        questionText: "Which is a proper JavaScript comment?", 
+        answers: ["??", "!#", "\\", "//"],
+        correctAnswer: "//",
+    },
+    {
+        questionText: "if we convert a object array into to a string with .JSON, which element type will be returned when we retrieve it with .JSON?", 
+        answers: ["flex-wrap: wrap", "HTML", "string", "object"],
+        correctAnswer: "object",
+    },
+    {
+        questionText: "how many woods could a wood chuck chuck for (chucks = 0; chucks < wood.length; chucks++) if... ?",
+        answers: ["(wood = wood[chucks]) {...", "(chucks[wood] = chucks) {...", "...function(event, {woodchuck*pi}", "chuck[wood] = wood.chuck: true;"],
+        correctAnswer: "(wood = wood[chucks]) {...",
+    },
+    {
+        questionText: "which value does an 'if' statement return?", 
+        answers: ["string", "intiger", "naan", "truthy/falsey"],
+        correctAnswer: "thruthy/falsey",
+    },
+    {
+        questionText: "how do we retrieve an ID'd with queryselector?", 
+        answers: ["...querySelector('.element')", "...querySelector('element')", "...querySelector('#element')", "...querySelector('document.element')"],
+        correctAnswer: "...querySelector('#element')",
+    },
+    {
+        questionText: "what is the proper number to setInterval to tick per normal second?", 
+        answers: ["600", "100", "60", "1000"],
+        correctAnswer: "1000",
+    },
+    {
+        questionText: "which is the 'OR' operator?", 
+        answers: ["!==", "===", "||", "&&"],
+        correctAnswer: "||",
+    },
+    {
+        questionText: "which method works to write text onto the page via JavaScript?", 
+        answers: ["console.log()", "document.write()", "addEventListener()", "appendChild()"],
+        correctAnswer: "document.write()",
     }
 ];
 
@@ -102,6 +142,7 @@ var questionIndex = 0;
 
 function populateQuestion() {
     if (questionIndex >= questionArray.length) {scoreInput();}
+     console.log(questionIndex);
      currentQuestion = questionArray[questionIndex];
      question.textContent = currentQuestion.questionText;
      aButton1.textContent = currentQuestion.answers[0]
@@ -116,7 +157,7 @@ function startClock(){
     var clockInterval = setInterval(function(){
         timeLeft--;
         timer.textContent = timeLeft;
-        if(questionIndex >= questionArray.length|| timeLeft === 0 ) {
+        if(questionIndex >= questionArray.length|| timeLeft === 0 || timeLeft < 0 ) {
             clearInterval(clockInterval);
             scoreInput();
         }
@@ -124,6 +165,7 @@ function startClock(){
 }
 
 function startQuiz() {
+    timer.hidden = false;
     homePage.hidden = true;
     quizPage.hidden = false;
     initialsPage.hidden = true;
@@ -135,13 +177,15 @@ function startQuiz() {
 }
 
 function pageLoad() {
+    timeLeft = 60;
+    questionIndex = 0;
     homePage.hidden = false;
     quizPage.hidden = true;
     initialsPage.hidden = true;
     scorePage.hidden = true;
     homeButton.hidden = true;
     scorePageButton.hidden = false;
-     if (questionIndex >= questionArray.length) {
+     if (timeLeft < 0) {
          window.location.reload();
      }
 };
