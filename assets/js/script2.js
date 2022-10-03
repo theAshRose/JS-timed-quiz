@@ -19,7 +19,7 @@ var initialsPage = document.querySelector("#post-game-input");
 startButton.addEventListener("click", startQuiz);
 scorePageButton.addEventListener("click", scorePageGo);
 clearScore.addEventListener("click", clearScores);
-homeButton.addEventListener("click", pageLoad);
+homeButton.addEventListener("click", pageLoad2);
 
 /// -----------------------------
 
@@ -27,10 +27,9 @@ var initialsButton = document.querySelector("#user-initials-button");
 var initialsInput = document.querySelector("#user-initials");
 var initialScore = document.querySelector("#user-score");
 
-
+var userScore = 0;
 
 function scorePageGo() {
-    scoreList.hidden = false;
     homePage.hidden = true;
     quizPage.hidden = true;
     initialsPage.hidden = true;
@@ -39,7 +38,13 @@ function scorePageGo() {
     scorePageButton.hidden = true;
     timer.hidden = true;
 
+var highScores = JSON.parse(localStorage.getItem("scoreString")) || [];
+    highScores.forEach(function(score){
+        var liElem = document.createElement("li");
+        liElem.textContent = score.initials + " -- " + score.score;
+        scoreList.appendChild(liElem);
 
+    });
 };
 
 initialsButton.addEventListener("click", function(event) {
@@ -50,29 +55,18 @@ initialsButton.addEventListener("click", function(event) {
         score: userScore,
         initials: initials,
     }
-    window.localStorage.clear(highScores)
-    highScores.push(scoreString)
+    window.localStorage.clear(highScores);
+    highScores.push(scoreString);
     localStorage.setItem("scoreString", JSON.stringify(highScores));
-    renderScores();
     scorePageGo();
 });
-
-function renderScores() {
-    var highScores = JSON.parse(localStorage.getItem("scoreString")) || [];
-    highScores.forEach(function(score){
-        var liElem = document.createElement("li");
-        liElem.textContent = score.initials + " -- " + score.score;
-        scoreList.appendChild(liElem);
-
-    });
-}
 
 function clearScores() {
     scoreList.hidden = true;
     window.localStorage.clear();
     for (x = 0; x < scoreList.length; x++) {
         scoreList[x].removeChild(liElem)
-    };
+    }
 };
 
 var questionArray = [
@@ -148,7 +142,6 @@ var questionIndex = 0;
 
 function populateQuestion() {
     if (questionIndex >= questionArray.length) {scoreInput();}
-     console.log(questionIndex);
      currentQuestion = questionArray[questionIndex];
      question.textContent = currentQuestion.questionText;
      aButton1.textContent = currentQuestion.answers[0]
@@ -163,7 +156,7 @@ function startClock(){
     var clockInterval = setInterval(function(){
         timeLeft--;
         timer.textContent = timeLeft;
-        if(questionIndex >= questionArray.length|| timeLeft === 0 || timeLeft < 0 ) {
+        if(questionIndex >= questionArray.length|| timeLeft <= 0 ) {
             clearInterval(clockInterval);
             scoreInput();
         }
@@ -171,7 +164,6 @@ function startClock(){
 }
 
 function startQuiz() {
-    timer.hidden = false;
     homePage.hidden = true;
     quizPage.hidden = false;
     initialsPage.hidden = true;
@@ -183,21 +175,23 @@ function startQuiz() {
 }
 
 function pageLoad() {
-    timeLeft = 60;
-    questionIndex = 0;
-    userScore = 0;
     homePage.hidden = false;
     quizPage.hidden = true;
     initialsPage.hidden = true;
     scorePage.hidden = true;
     homeButton.hidden = true;
     scorePageButton.hidden = false;
-     if (timeLeft < 0) {
-         window.location.reload()
-     }
-};
+}
 
-var userScore = 0;
+function pageLoad2() {
+    homePage.hidden = false;
+    quizPage.hidden = true;
+    initialsPage.hidden = true;
+    scorePage.hidden = true;
+    homeButton.hidden = true;
+    scorePageButton.hidden = false;
+    window.location.reload();
+}
 
 function scoreInput() {
     initialScore.textContent = "You're score: " + userScore;
@@ -212,5 +206,3 @@ function scoreInput() {
 };
 
 pageLoad();
-
-
