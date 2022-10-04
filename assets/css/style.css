@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: serif;
+    font-family: 'Courier New', Courier, monospace;
     color: black;
 }
 
@@ -9,7 +9,7 @@ title {
 }
 
 body { 
-    background-color: linear-gradient(purple, white, black);
+    background-color: rgb(0, 18, 29);
 }
 
 header {
@@ -23,9 +23,13 @@ header {
 
 #score-page-button,
 #home-button {
-    color: white;
-    background-color: blue;
+    background-color: rgb(0, 48, 78);
+    border-color:rgb(0, 204, 255);
+    color:white;
+    padding:6px;
     max-height: 100px;
+    min-width: 125px;
+    font-size: 18px;
 }
 
 footer {
@@ -43,7 +47,7 @@ main {
     flex-direction: column;
     width:400px;
     height: 300px;
-    background-color: white;
+    background-color: rgb(0, 18, 29);
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
@@ -51,18 +55,75 @@ main {
 }
 
 main section {
-    height: 300px;
+    background-color: rgb(0, 18, 29);
+    min-height: 300px;
     width: 600px;
-    padding: 10px;
-}
-main h2 {
-    background-color: cyan;
+    padding: 25px;
 }
 
-button {
+main p {
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+}
+main h2 {
+    background-color: rgb(0, 48, 78);
+    border-left-style: dashed;
+    border-width: 5px;
+    border-color:rgb(0, 204, 255);
+    color:white;
+    padding-left: 10px;
+}
+
+main h1{
+    background-color: rgb(0, 48, 78);
+    border-left-style: dashed;
+    border-width: 5px;
+    border-color:rgb(0, 204, 255);
+    color:white;
+    padding-left: 10px;
+}
+
+main h3 {
+    border-left-style: dashed;
+    border-width: 5px;
+    border-color:rgb(0, 204, 255);
+    color:white;
+    padding-left: 10px;
+}
+
+.answerButton {
+    background-color: rgb(0, 48, 78);
+    border-color:rgb(0, 204, 255);
+    font-size: 24px;
+    color:white;
+    padding:6px;
+}
+
+#start-button{
+    background-color: rgb(0, 48, 78);
+    border-color:rgb(0, 204, 255);
     font-size: 18px;
-    color:black;
-    background-color: linear-gradient(cyan)
+    color:white;
+    padding:6px;
+
+}
+
+#clear-button{
+    background-color: rgb(0, 48, 78);
+    border-color:rgb(0, 204, 255);
+    font-size: 18px;
+    color:white;
+    padding:6px;
+
+}
+
+#user-initials-button{
+    background-color: rgb(0, 48, 78);
+    border-color:rgb(0, 204, 255);
+    font-size: 18px;
+    color:white;
+    padding:6px;
 }
 
 .mainwrapper { 
@@ -78,8 +139,31 @@ button {
 }
 
 #answer-status {
-    color: rgba(93, 91, 91, 0.456);
+    color: whitesmoke;
     font-style: italic;
-    font-size: 14px;
+    font-size: 18px;
 }
 
+li::marker {
+    color: white;
+}
+
+#score-list {
+    background-color: rgb(0, 48, 78);
+    border-color: cyan;
+    padding:5px;
+}
+
+#score-list li {
+    color: white;
+    border-left-style: dashed;
+    border-color: cyan;
+    border-width: 3px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+#timer {
+    color: white;
+    font-size: 45px;
+}
