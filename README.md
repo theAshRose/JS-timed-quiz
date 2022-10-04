@@ -17,7 +17,7 @@ Simply click the start button and follow the prompts! Easy to use and difficult 
 
 ## Screenshot of app
 
-![screenshot](./assets/images/js-timed-quiz.png)
+![screenshot](./assets/images/js-timed-quiz-ss.png)
 
 ## the Code!
 Here I am showing the conditionals placed on the questions to verify if it was correct or not. This was the most important piece as it:
