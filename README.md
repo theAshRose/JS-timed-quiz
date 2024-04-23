@@ -2,7 +2,7 @@
 
 ## Description
 
-This is my second iteration of using JavaScript logic. This application was created by myself from scratch. [Here is a link to the application](https://thedomconrad.github.io/JS-timed-quiz/)
+This is my second iteration of using JavaScript logic. This application was created by myself from scratch. [Here is a link to the application](https://theashrose.github.io/JS-timed-quiz/)
 I practiced using web APIs to execute the following for this quiz:
 --Show and hide the page depending on where the user needs to interact. 
 --Run a timer - which reduces by 15 seconds for every missed question and ends the quiz if time runs out.
@@ -45,6 +45,6 @@ var answerButtonAll = document.querySelectorAll(".answerButton");
 ```
 
 ## Author Links
----[Linkedin](https://www.linkedin.com/in/dominic-conradson-76638b172/)---
-[GitHub](https://github.com/theDomConrad/)---
-[Portfolio](https://thedomconrad.github.io/Dominic-Conradson-Portfolio/)---
+---[Linkedin](https://www.linkedin.com/in/ashlynn-conradson-76638b172/)---
+[GitHub](https://github.com/theashrose/)---
+[Portfolio](https://theashrose.github.io/ashlynn-Conradson-Portfolio/)---
