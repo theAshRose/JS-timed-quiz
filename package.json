@@ -1,0 +1,12 @@
+{
+  "name": "js-timed-quiz",
+  "version": "1.0.0",
+  "description": "This is my second iteration of using JavaScript logic. This application was created by myself from scratch. [Here is a link to the application](https://theashrose.github.io/JS-timed-quiz/)\r I practiced using web APIs to execute the following for this quiz:\r --Show and hide the page depending on where the user needs to interact. \r --Run a timer - which reduces by 15 seconds for every missed question and ends the quiz if time runs out.\r --Display wether or not the user selected the correct answer - as well as keep track of their score.\r --Take the user's initials at the end and compile it with their score on a score sheet - which the user may clear if they wish.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
