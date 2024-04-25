@@ -9,11 +9,13 @@ I practiced using web APIs to execute the following for this quiz:
 --Display wether or not the user selected the correct answer - as well as keep track of their score.
 --Take the user's initials at the end and compile it with their score on a score sheet - which the user may clear if they wish.
 
-I am proud of this project as it took a lot of energy to learn how to implement the technologies used. Even the CSS - the positioning of every element on the page - demonstrates knowledge I have learned practicing web development thus far.
+This was a creative endeavour I sought out to complete which utilized only vanilla front-end technologies. No npm packages, node or anything. This was also to learn antiquated tech like Jquery for a 'just-in-case' scenario in the future. I went ahead and made the app compatible with docker just because. 
 
 ## How to use
 
-Simply click the start button and follow the prompts! Easy to use and difficult to master ;)
+Simply click the start button and follow the prompts! It is unforgiving and whimsical, good luck!
+
+This project also runs in docker so if you are familiar with the technology you may clone this repo and run it locally.
 
 ## Screenshot of app
 
